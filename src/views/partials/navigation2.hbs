@@ -9,18 +9,33 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-         
+
         {{#if user}}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Menu
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/links">Acepta un servicio1212</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/links/add">Historial de servicios</a>
-          </div>
+          {{#ifCond user.rol '==' 1}}
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">Rol user</a>
+        </li>
+        {{/ifCond}}
+        {{#ifCond user.rol '==' 2}}
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">Rol tecnic</a>
+        </li>
+        {{/ifCond}}
+        {{#ifCond user.rol '==' 3}}
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">Rol admin</a>
+        </li>
+        {{/ifCond}}
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/links">Acepta un servicio1212</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/links/add">Historial de servicios</a>
+        </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/profile">Perfil</a>
