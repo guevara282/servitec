@@ -3,6 +3,7 @@ const router = express.Router();
 const pool = require('../database');
 const passport = require('passport');
 const { isLoggedIn, isNotLogguedIn } = require('../lib/auth');
+const paths= require('../lib/path');
 
 // SIGNUP
 router.get('/signup',async (req, res) => {
@@ -43,6 +44,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/profile', isLoggedIn, (req, res) => {
+  paths.routes(req);
   res.render('profile');
 });
 
